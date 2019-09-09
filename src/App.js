@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+import Form, {
+  FormThemeProvider,
+  Input,
+  Select,
+  MultiSelect,
+  FormRow,
+  FormButton,
+} from 'react-standalone-form'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <FormThemeProvider>
+      <div className="App">
+        <Form fields={['input', 'select', 'multi-select']}>
+          <Input
+            name='input'
+            label='Label'
+            addon='addon'
+            placeholder='Placeholder'
+            help='Help text'
+          />
+          <FormRow>
+            <Select name='select' label='Select' options={['Option']} />
+            <MultiSelect name='multi-select' label='Multiple select' />
+          </FormRow>
+        </Form>
+        <FormButton>Submit button</FormButton>
+      </div>
+    </FormThemeProvider>
+  )
 }
 
 export default App;
